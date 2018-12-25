@@ -4,22 +4,30 @@ console.log('Starting app.js');
 const fs=require('fs');
 //const os=require('os');
 const _=require('lodash');
+const yargs=require('yargs');
 const notes=require('./notes.js'); 
 
-var command =process.argv[2];
+const argv=yargs.argv;
+//var command =process.argv[2];
+var command=argv._[0];
 console.log('Command',command);
-console.log(process.argv);
+//console.log('process',process.argv);
+console.log('yargs',argv);
 if(command==='add'){
-    console.log('adding new note');
+    //console.log('adding new note');
+    notes.addNote(argv.title, argv.body);
 }
 else if(command==='list'){
-    console.log('listing all note');
+   //console.log('listing all note');
+   notes.getAll();
 }
 else if(command==='read'){
-console.log('reading note');
+//console.log('reading note');
+notes.getNote(argv.title);
 }
 else if(command==='remove'){
-    console.log('removing note');
+   notes.removeNote(argv.title);
+    // console.log('removing note');
 }
 else{
     console.log('command not recognized');

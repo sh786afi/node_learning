@@ -17,6 +17,8 @@ body: 'Some body'
 };
 var originalNoteString=JSON.stringify(originalNote);
 fs.writeFileSync('notes.json', originalNoteString);
+console.log(typeof originalNoteString);
+console.log(originalNoteString);
 
 var noteString = fs.readFileSync('notes.json');
 var note=JSON.parse(noteString);
