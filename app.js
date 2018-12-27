@@ -15,7 +15,14 @@ console.log('Command',command);
 console.log('yargs',argv);
 if(command==='add'){
     //console.log('adding new note');
-    notes.addNote(argv.title, argv.body);
+    var note=notes.addNote(argv.title, argv.body);
+    if(note){
+        console.log('note created');
+        console.log('--');
+        console.log(`Title: ${note.title}`);
+        //console.log('Body',note.body);
+        console.log(`Body:${note.body}`);
+    }
 }
 else if(command==='list'){
    //console.log('listing all note');
@@ -26,8 +33,10 @@ else if(command==='read'){
 notes.getNote(argv.title);
 }
 else if(command==='remove'){
-   notes.removeNote(argv.title);
-    // console.log('removing note');
+   var noteRemoved=notes.removeNote(argv.title);
+   var message=noteRemoved ? 'note was removed' : 'note was not removed';
+   console.log(message);
+    // console.log('removing note'); 
 }
 else{
     console.log('command not recognized');
