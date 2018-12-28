@@ -31,7 +31,7 @@ body
    }
 };
 var getAll=()=>{
-    console.log('Getting all notes');
+    return fetchNote();
     
 };
 var getNote=(title)=>{
@@ -49,6 +49,7 @@ saveNotes(filterNotes);
 return notes.length!==filterNotes.length;
 };
 var logNote=(note)=>{
+     debugger;
     console.log('--');
     console.log(`Title: ${note.title}`);
     //console.log('Body',note.body);
