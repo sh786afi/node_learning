@@ -5,8 +5,32 @@ const fs=require('fs');
 //const os=require('os');
 const _=require('lodash');
 const yargs=require('yargs');
-const notes=require('./notes.js'); 
-const argv=yargs.argv;
+const notes=require('./playground/notes'); 
+const titleOption={
+    describe: 'Title of note',
+    demand: true,
+    alias: 't'
+};
+const argv=yargs
+.command('add','Add a new note',{
+    title:titleOption,
+    body:{
+        describe: 'Title of note',
+        demand: true,
+        alias: 'b'
+
+    }
+
+})
+.command('list','list all note')
+.command('read','read a note',{
+    title:titleOption
+})
+.command('remove','Remove a note',{
+    title:titleOption
+})
+.help()
+.argv;
 //var command =process.argv[2];
 var command=argv._[0];
 console.log('Command',command);
